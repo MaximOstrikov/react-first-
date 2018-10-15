@@ -351,6 +351,10 @@ var _User = __webpack_require__(/*! ./User */ "./client/User.js");
 
 var _User2 = _interopRequireDefault(_User);
 
+var _users = __webpack_require__(/*! ../database/users */ "./database/users.json");
+
+var _users2 = _interopRequireDefault(_users);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -361,6 +365,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var btn = 0;
 var page = 0;
+var lastUserId = _users2.default.lastId;
 
 var UserList = function (_React$Component) {
     _inherits(UserList, _React$Component);
@@ -381,7 +386,6 @@ var UserList = function (_React$Component) {
         value: function componentDidMount() {
             var _this2 = this;
 
-            console.log(btn + ' ' + page);
             console.log("component did mount");
             _UserActions2.default.loadList({ skip: page * btn, pageSize: btn }, function (list) {
                 _this2.setState({ list: list });
@@ -398,35 +402,35 @@ var UserList = function (_React$Component) {
                 _react2.default.createElement(
                     'button',
                     { onClick: function onClick() {
-                            page--;_this3.componentDidMount();
+                            page > 0 ? page-- : alert('first page');_this3.componentDidMount();
                         } },
                     'Previous page'
                 ),
                 _react2.default.createElement(
                     'button',
                     { onClick: function onClick() {
-                            btn = 5;_this3.componentDidMount();
+                            btn = 5;page = 0;_this3.componentDidMount();
                         } },
                     '5'
                 ),
                 _react2.default.createElement(
                     'button',
                     { onClick: function onClick() {
-                            btn = 10;_this3.componentDidMount();
+                            btn = 10;page = 0;_this3.componentDidMount();
                         } },
                     '10'
                 ),
                 _react2.default.createElement(
                     'button',
                     { onClick: function onClick() {
-                            btn = 20;_this3.componentDidMount();
+                            btn = 20;page = 0;_this3.componentDidMount();
                         } },
                     '20'
                 ),
                 _react2.default.createElement(
                     'button',
                     { onClick: function onClick() {
-                            page++;_this3.componentDidMount();
+                            Math.ceil(lastUserId / btn) > page + 1 ? page++ : alert('last page' + lastUserId + ' ' + btn + ' ' + page);_this3.componentDidMount();
                         } },
                     'Next page'
                 ),
@@ -545,6 +549,17 @@ var _Application2 = _interopRequireDefault(_Application);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom2.default.render(_react2.default.createElement(_Application2.default, null), document.getElementById('application'));
+
+/***/ }),
+
+/***/ "./database/users.json":
+/*!*****************************!*\
+  !*** ./database/users.json ***!
+  \*****************************/
+/*! exports provided: lastId, data, default */
+/***/ (function(module) {
+
+module.exports = {"lastId":21,"data":[{"id":1,"email":"1","password":"asdfasdf"},{"id":2,"email":"2","password":"asdfasdf"},{"id":3,"email":"3","password":"asdfasdf"},{"id":4,"email":"4","password":"asdfasdf"},{"id":5,"email":"5","password":"asdfasdf"},{"id":6,"email":"6","password":"asdfasdf"},{"id":7,"email":"7","password":"asdfasdf"},{"id":8,"email":"8","password":"asdfasdf"},{"id":9,"email":"9","password":"asdfasdf"},{"id":10,"email":"10","password":"asdfasdf"},{"id":11,"email":"11","password":"asdfasdf"},{"id":12,"email":"12","password":"asdfasdf"},{"id":13,"email":"13","password":"asdfasdf"},{"id":14,"email":"14","password":"asdfasdf"},{"id":15,"email":"15","password":"asdfasdf"},{"id":16,"email":"16","password":"asdfasdf"},{"id":17,"email":"17","password":"asdfasdf"},{"id":18,"email":"18","password":"asdfasdf"},{"id":19,"email":"19","password":"asdfasdf"},{"id":20,"email":"20","password":"asdfasdf"},{"id":21,"email":"21","password":"asdfasdf"}]};
 
 /***/ }),
 
