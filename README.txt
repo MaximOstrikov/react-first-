@@ -1,3 +1,4 @@
+#для того чтобы стартануть сервер, надо скачать nodejs
 #https://nodejs.org/en/
 #после этого надо открыть консоль в директории проекта, и выполнить команду
 npm install
@@ -39,3 +40,12 @@ npm run watch
 
 #post http://localhost/users/save   - возвращает список пользователей. Тело запроса
 #{"id": 1, "email": "email@gmail.com", "password": "asdf"}  < если передан параметр id, то пользователь будет обновлен
+
+#delete http://localhost/users/1   - удяляе выбранного пользователя (в данном случае 1)
+
+#post http://localhost/login - делает логин пользователя
+#{"email": "email@gmail.com", "password": "asdf"} ищет пользователя с таким логином и паролем, возвращает токен
+#Ответ метода выглядит так: {"token": "eyJpZCI6MSwiZW1haWwiOiIyMjJAbWFpbC5jb20ifQ=="}
+#поле token надо сохранить, и передавать в заголовках других запросах под названием "auth-token"
+#как задать заголовок запроса - https://stackoverflow.com/questions/10093053/add-header-in-ajax-request-with-jquery
+
